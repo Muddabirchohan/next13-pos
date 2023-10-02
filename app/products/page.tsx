@@ -1,6 +1,6 @@
 import { JSXElementConstructor, PromiseLikeOfReactNode, ReactElement, ReactNode, ReactPortal, Suspense } from "react";
 import Link from 'next/link';
-
+import Image from "next/image";
 
 // Next.js fetch API in action
 async function loadPosts() {
@@ -8,17 +8,10 @@ async function loadPosts() {
   return res.json();
 }
 
-
-
 export const  loadPost = async (id: string) => {
   const res = await fetch(`https://api.slingacademy.com/v1/sample-data/photos/${id}`);
-  console.log("inside")
   return res.json();
 }
-
-
-
-
 
 const PostList = async () => {
   const posts = await loadPosts();
@@ -38,7 +31,7 @@ const PostList = async () => {
             </Link>
             </h3>
           <p className="text-xl font-bold underline">
-            <img src={post.url} width={400} height={250}/>
+            <Image src={post.url} width={300} height={250}/>
           </p>
         </div>
       ))}
